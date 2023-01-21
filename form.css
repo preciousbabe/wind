@@ -1,0 +1,12 @@
+img{
+    cursor: pointer;
+}
+body{
+    background-image: linear-gradient(to right bottom, 
+    rgba(36, 168, 201, 0.801),
+     rgba(6, 18, 22, 0.507)),
+     url(./images/tesla1.gif);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}

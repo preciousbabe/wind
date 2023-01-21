@@ -1,0 +1,99 @@
+header{
+     height: 100vh;
+    /* width: 100vw;  */
+    background-image: url(./images/pexels-kervin-edward-lara-3976320.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Josefin Sans', sans-serif;
+}
+button{
+    border: none;
+}
+li {
+    position: relative;
+    display: inline-block;
+  }
+  li:after {
+    content: "";
+    position: absolute;
+    left:0;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background-color: dodgerblue;
+    transition: width .5s ease-in;
+  }
+  li:hover:after {
+    width: 100%;
+  }
+  .hero{
+    margin: 12% auto;
+    font-family: 'Poppins', sans-serif;
+  }
+  .hero > span{
+    color:rgb(0, 89, 255);
+    font-size:3rem;
+    font-weight: bolder;
+  }
+  .hero > h1{
+    font-size: 3rem;
+  }
+  .hero > h4{
+    font-style: italic;
+  }
+  @media(max-width:576px){
+    .hero > span, 
+    .hero > h1
+    {
+        font-size: 30px;
+    }
+    .header{
+      width: 100%;
+    }
+  }
+.btn-custom{
+    margin-left: 10px;
+}
+.btn{
+    color: white;
+    border: none;
+}
+
+/* products */
+#products{
+    background-color:#ecf5ff;
+    color:#07024b;
+    font-family: 'poppins', sans-serif;
+}
+
+#our-team{
+  background-color:#97bbe4;
+  color:#07024b;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.photo{
+  width: 500px;
+  height: 500px;
+  margin: 15px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+@media(max-width:576px){
+  .photo{
+    width: 250px;
+    height: 250px;
+  }
+}
+/* why choose us */
+#why-choose-us{
+  background: color #f1f1f1;
+  color: #07024b;
+  font-family: 'Josefin Sans', sans-serif;
+}
+i{
+  font-size: 3rem;
+  margin-block: 1rem;
+  color: #07024b;
+}
