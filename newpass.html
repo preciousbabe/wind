@@ -27,13 +27,17 @@
             <div class="text-center my-5">
               <img src="./assets/images/logo.png" alt="logo" class="logo">
             </div>
-          <form method="post" id="form_changePass" class="justify-content-center px-2 align-items-center">
-            <div>
-                <label for="email" class="form-label small ">Email:</label>
-                <input octavalidate="R,EMAIL" type="email" class="form-control border-0 border-bottom" id="inp_email" name="email" />
-             </div>
+          <form method="post" id="form_newPass" class="justify-content-center align-items-center">
+                <div>
+                     <label for="password" class="form-label small">New Password:</label>
+                     <input  octavalidate="R" minlength="8" type="password" class="form-control border-0 border-bottom" id="inp_pass" name="pass"/>
+                </div>
+                <div>
+                    <label for="confirm-password" class="form-label small mt-4">Confirm Password:</label>
+                    <input equalto="inp_pass" type="password"class="form-control border-0 border-bottom" id="inp_con_pass"/>
+                 </div>
             <div class="text-center">
-              <a href="./newpass.html" class="btn btn-primary w-100 my-4">Submit</a>
+              <button class="btn btn-primary w-100 my-4"> <a href="./newpass"></a> Submit</button>
             </div>
           </form>
         </div>

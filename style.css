@@ -75,18 +75,19 @@ li {
 }
 
 .photo{
-  width: 500px;
-  height: 500px;
-  margin: 15px;
+  width: 400px;
+  height: 400px;
+  /* margin: 15px; */
   border-radius: 50%;
   object-fit: cover;
 }
 @media(max-width:576px){
   .photo{
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
   }
 }
+
 /* why choose us */
 #why-choose-us{
   background: color #f1f1f1;

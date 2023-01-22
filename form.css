@@ -12,6 +12,14 @@
     background-size: cover;
     height: 95vh;
 }
+.img-side-sm{
+    background: linear-gradient(rgba(36, 168, 201, 0.801),
+      rgba(6, 18, 22, 0.507));
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    height: 25vh;
+}
 @media(max-width:576px){
     .img-side{
         height: 50vh;
@@ -21,11 +29,6 @@
         padding: 3rem;
     }
 }
-.logo{
-    margin:15% 25%;
-} 
 .hero-img{
-    margin: 50% auto;
+    margin: 60% auto;
 }
-
-  
