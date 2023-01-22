@@ -1,12 +1,31 @@
-img{
-    cursor: pointer;
-}
-body{
-    background-image: linear-gradient(to right bottom, 
+ @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.img-side{
+    /* background: linear-gradient(to right bottom, 
     rgba(36, 168, 201, 0.801),
      rgba(6, 18, 22, 0.507)),
-     url(./images/tesla1.gif);
+      url(./assets/images/tesla1.gif);    */
+      background: linear-gradient(rgba(36, 168, 201, 0.801),
+      rgba(6, 18, 22, 0.507));
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
+    height: 95vh;
 }
+@media(max-width:576px){
+    .img-side{
+        height: 50vh;
+        margin-bottom: 2rem;
+    }
+    .form-side{
+        padding: 3rem;
+    }
+}
+.logo{
+    margin:15% 25%;
+} 
+.hero-img{
+    margin: 50% auto;
+}
+
+  

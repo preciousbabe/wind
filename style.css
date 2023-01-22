@@ -1,7 +1,7 @@
 header{
      height: 100vh;
     /* width: 100vw;  */
-    background-image: url(./images/pexels-kervin-edward-lara-3976320.jpg);
+    background-image: url(./assets/images/pexels-kervin-edward-lara-3976320.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -10,6 +10,7 @@ header{
 button{
     border: none;
 }
+
 li {
     position: relative;
     display: inline-block;
@@ -96,4 +97,8 @@ i{
   font-size: 3rem;
   margin-block: 1rem;
   color: #07024b;
+}
+.news-letter{
+  background-color:#ecf5ff;
+  color:#07024b;
 }
