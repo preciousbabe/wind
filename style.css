@@ -103,3 +103,19 @@ i{
   background-color:#ecf5ff;
   color:#07024b;
 }
+
+/* clients */
+.client-logo{
+  padding: 64px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d6eaff;
+  background-color: #f5f7fa;
+  
+}
+
+.client-logo:hover{
+  outline: 8px solid #9ba0b6;
+  outline-offset: 14px;
+  transition: 0.5s;
+}
