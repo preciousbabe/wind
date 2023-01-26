@@ -1,16 +1,12 @@
 header{
      height: 100vh;
-    /* width: 100vw;  */
-    background-image: url(./assets/images/pexels-kervin-edward-lara-3976320.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+     background-image: url(./assets/images/17973908.jpg);
+     background-size: cover;
     font-family: 'Josefin Sans', sans-serif;
 }
 button{
     border: none;
 }
-
 li {
     position: relative;
     display: inline-block;
@@ -28,37 +24,19 @@ li {
   li:hover:after {
     width: 100%;
   }
-  .hero{
-    margin: 12% auto;
-    font-family: 'Poppins', sans-serif;
-  }
-  .hero > span{
-    color:rgb(0, 89, 255);
-    font-size:3rem;
-    font-weight: bolder;
-  }
-  .hero > h1{
-    font-size: 3rem;
-  }
-  .hero > h4{
-    font-style: italic;
-  }
-  @media(max-width:576px){
-    .hero > span, 
-    .hero > h1
-    {
-        font-size: 30px;
-    }
-    .header{
-      width: 100%;
-    }
-  }
 .btn-custom{
     margin-left: 10px;
 }
 .btn{
     color: white;
     border: none;
+}
+.hero-text{
+margin-top: 6rem;
+color: #07024b;
+}
+.hero-text > h1{
+  font-size: 4.5rem;
 }
 
 /* products */
