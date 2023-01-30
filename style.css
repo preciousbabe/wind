@@ -192,13 +192,12 @@ nav{
     padding: 3rem 0;
 }
 .box{
-    padding: 2rem;
-    margin: 2rem;
-    width: 27rem;
+   padding: 2rem;
+   margin-block:1rem;
     background-color: #fff;
     color:#09318f;
     border-radius: .5rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 .box:hover{
     background: #253fd1;
@@ -310,6 +309,7 @@ color: #fff;
 .icon p{
     font-size: 1.9rem;
     color: #09318f;
+    font-weight: bold;
 }
 .icon i{
     font-size: 2rem;
