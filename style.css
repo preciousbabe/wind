@@ -23,20 +23,12 @@ a{
 ul{
     list-style: none;
 }
-/* .container{
-width: 100%;
-max-width: 120rem;
-padding: 0 1.5rem;
-margin: 0 auto;
-} */
+
 header{
     width: 100%;
     height: 6rem;
     display: flex;
     align-items: center;
-    /* position: fixed;
-    top: 0;
-    left: 0; */
     background: transparent;
     z-index: 999;
 }
@@ -92,10 +84,14 @@ nav{
     display: block;
     text-transform: uppercase;
     font-size: 2rem;
-    color:#1545b3;
+    color:#0f4eec;
     letter-spacing: 1.5px;
     padding: .5rem;
     margin: 1rem;
+}
+.nav-link::before{
+    height: 2rem;
+    background: #0f4eec;
 }
 /* hero section */
  
@@ -126,10 +122,9 @@ nav{
 }
 
 /* team */
-/* .team{
-    text-align: center;
-    margin-block: 5rem;
-} */
+.team{
+    padding-block: 5rem;
+}
 .team p{
    font-family: 'Josefin Sans', sans-serif;
    font-size: x-large;
@@ -138,14 +133,12 @@ nav{
     font-size: 6rem;
     color:#253fd1;
     font-family:'open sans', sans-serif ;
-    /* margin-block: 1rem; */
 }
 .team-img img{
     border-radius: 50%;
     width: 350px;
     height: 350px;
     object-fit: cover;
-    /* margin: 4rem; */
     border: 5px solid #253fd1;
     padding: 10px;
 }
@@ -184,13 +177,11 @@ nav{
 .features{
     min-height: 100vh;
     background-color:#f1f1f1;
+    padding-block: 5rem;
 }
  .features h1{
-    text-align: center;
-    font-size: 3rem;
-    width: 50rem;
-    padding-top: 8.5rem;
     color:#09318f;
+    font-weight: bolder;
 } 
 .features-image{
     text-align: center;
@@ -250,6 +241,7 @@ font-size:2.6rem;
     justify-content: center;
     flex-wrap: wrap;  
     background-color:#ecf5ff;
+    padding-block: 2rem;
 } 
 .contact form{
     background-color:#fff;
@@ -257,7 +249,7 @@ font-size:2.6rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
 } 
  .contact-input{
-    height: 5rem;
+    height: 8rem;
     width: 100%;
     border: none;
     border-bottom: 1px solid #333;
@@ -297,13 +289,15 @@ color: #fff;
 .contact-input:focus,.contact-input textarea:focus{
     border-bottom:1px solid #0f4eec;
 }
-
+.contact-content{
+    padding: 3rem;
+}
 .contact-content h3{
     font-size: 4rem;
     color:#09318f;
 }
 .contact-content p{
-    font-size: 1.4rem;
+    font-size: 2.4rem;
     color: #09318f;
     padding: 1rem 0;
 }
@@ -314,13 +308,30 @@ color: #fff;
     cursor: pointer;
 }
 .icon p{
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     color: #09318f;
 }
 .icon i{
     font-size: 2rem;
     padding-right: 2rem;
 }  
+
+#myBtn{
+display: none; 
+  position: fixed; 
+  bottom: 20px; 
+  right: 30px;
+  z-index: 99; 
+  border: none;
+  outline: none; 
+  background-color:#09318f;
+  color: white; 
+  cursor: pointer;
+  padding: 15px; 
+  border-radius: 10px;
+  font-size: 18px; 
+}
+
 
 /* product section */
 .product{
@@ -364,44 +375,17 @@ color: #fff;
     } 
     .hero-tagline{
         font-size: 4rem;
-        margin: 2rem;
+        margin: 3rem;
     }
     .hero-img{
         width: 70%;
     }
     .btn-tagline{
-        margin: 2rem;
+        margin: 3rem;
     }
     body{
         margin-bottom: 15rem;
     }
-    /* .team{
-        margin-block:3rem;
-    } */
  } 
 
-/* @media screen and (max-width: 768px){
-.hero{
-    flex-direction: column;
-}
-.hero-img2{
-    width: 20rem;
-}
-.team-img{
-    flex-direction: column;
-}
-.team-img img{
-    width: 200px;
-    height: 200px;
-    margin: 0%;
-}
-.about h1{
-    width: 90%;
-}
-.features h1{
-    width: 100%;
-}
-.contact-content{
-    padding-bottom: 6rem;
-}
-} */ 
+
