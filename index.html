@@ -16,37 +16,58 @@
 <body>
     <!-- header -->
     <header class="header">
-        <div class="container">
-        <nav class="navbar">
-            <a href="./index.html" class="logo">
-                <img src="./assets/images/logo.png" alt="logo">
-            </a>
-            <div class="hamburger">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-times"></i>
-            </div>
-            <ul class="nav-list">
-                <li class="nav-item"><a href="#" class=" nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#team" class="nav-link">Team</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#products" class="nav-link">Products</a></li>
-                <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        <nav class="navbar navbar-expand-lg bg-light mb-5">
+            <div class="container">
+          <a href="./index.html" class="navbar-brand">
+            <img src="./assets/images/logo.png" alt="logo">
+          </a>
+          <button class="navbar-toggler"
+           data-bs-toggle="collapse" 
+           data-bs-target="#navmenu" 
+           type="button">
+           <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-primary fw-1 fs-2">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#team" class="nav-link text-primary fw-1 fs-2">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link text-primary fw-1 fs-2">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link text-primary fw-1 fs-2">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link text-primary fw-1 fs-2">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link text-primary fw-1 fs-2">Contact us</a>
+                </li>
             </ul>
+          </div>
         </nav>
         </div>
-    </header>
-
+    
     <!-- hero section -->
-      <div class="row align-items-center">
-        <div class="col-lg">
-            <img src="./assets/images/Group 444.png" alt="lady smiling" class="img-fluid hero-img">
+    <div class="container">
+       <div class="row d-flex flex-md-row-reverse mt-4 align-items-center hero">
+        <div class="col-md">
+            <img src="./assets/images/tesla1.gif" alt="lady smiling" class="img-fluid hero-img">
         </div>
         <div class="col-md">
-            <h1 class="hero-tagline">Energy Powers Dreams.<br> We Create That Energy <span> For You</span></h1>
-            <a href="./register.html" class="btn-tagline">Get Started</a>
+            <h1 class="hero-tagline">Reliable & Sustainable <span>Wind Generated</span> Electricity</h1>
+            <h4 class="h2 text-light">Energy powers dreams, we create that energy for you...</h4>
+            <div class="mt-5">
+            <a href="./register.html" class="btn-tagline mt-5">Get Started</a>
+            </div>
         </div>
-      </div>
+       </div>
+      </div> 
+    </header>
 
     <!-- team -->
     <section id="team" class="text-center my-5 team">
@@ -311,11 +332,11 @@
         </div>
         <div class="icon">
             <i class="fas fa-phone"></i>
-            <p>+234 9074719592</p>
+            <p>+234 9074719592 <br> +2347030422454</p>
         </div>
         <div class="icon">
             <i class="fas fa-globe"></i>
-            <p>www.Wind Electicity Nigeria.com</p>
+            <p>www.Wind Electricity.com.ng</p>
         </div>
     </div>
     </div>
@@ -323,7 +344,8 @@
 </section> 
 
 <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+<script src="./main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="./main.js"></script>
 </body>
 </html>

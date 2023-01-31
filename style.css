@@ -14,111 +14,54 @@ body{
     font-family: 'open sans', sans-serif;
     font-size: 1.6rem;
     color: #2d2c2c;
-    /* overflow-x: hidden; */
 }
 a{
     text-decoration: none;
     color: inherit;
+    font-family: inherit;
 }
 ul{
     list-style: none;
 }
 
-header{
-    width: 100%;
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    background: transparent;
-    z-index: 999;
-}
-nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.logo{
-    max-width: 80%;
-}
-.hamburger{
-    font-size: 2.6rem;
-    color:#1545b3;
-    cursor: pointer;
-    position: relative;
-    z-index: 1500;
-}
-.hamburger .fa-times{
-    display: none;
-}
-.nav-list{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+ header{
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 1400;
-    opacity: 0;
-    transform: scale(0);
-    transition: opacity .5s;
-}
-.menu-open .nav-list{
-    opacity: 1;
-    background-color: #fff;
-    transform: scale(1);
-}
-.menu-open .hamburger .fa-times{
-    display: block;
-}
-.menu-open .hamburger .fa-bars{
-    display: none;
+    background-image: url(./assets/images/nmbh.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+   font-family: 'Josefin Sans', sans-serif;
+} 
+.logo{
+    width: 100%;
 }
 
-.nav-item:not(:last-child){
-    margin-bottom: .5rem;
-}
-.nav-link{
-    display: block;
-    text-transform: uppercase;
-    font-size: 2rem;
-    color:#0f4eec;
-    letter-spacing: 1.5px;
-    padding: .5rem;
-    margin: 1rem;
-}
-.nav-link::before{
-    height: 2rem;
-    background: #0f4eec;
-}
 /* hero section */
  
 .hero-img{
-    width: 60%;
+    width: 100%;
 }
 .hero-tagline{
-    font-size:7rem;
+    font-size:6rem;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
-    color: #0f4eec;
+    color: #ffffff;
 }
 .hero-tagline span{
-    color: #09318f;
+    color: #74b5fc;
 }
 .btn-tagline{
     background-color: #0f4eec;
     color: #fff;
-    padding: 1rem; 
+    padding: 1.5rem; 
     border: none;
     outline: none;
     border-radius: 10px;
+    font-weight: bold;
 }
 .btn-tagline:hover{
     background: transparent;
-    color: #0f4eec;
-    border: 1px solid #0f4eec;
+    color: #ffffff;
+    border: 1px solid #ffffff;
 }
 
 /* team */
@@ -342,22 +285,6 @@ display: none;
     color: #fff;
 }
 
-
-
- @media screen and (min-width: 1000px){
-    .hamburger{
-        display: none;
-    }
-    .nav-list{
-     position: initial;
-     height: initial;
-     width: initial;
-     flex-direction: row;
-     justify-content: initial;
-     opacity: 1;
-     transform: scale(1);
-    }
-}
  @media screen and (max-width: 576px){
     .team-img img{
         height: 200px;
@@ -375,13 +302,7 @@ display: none;
     } 
     .hero-tagline{
         font-size: 4rem;
-        margin: 3rem;
-    }
-    .hero-img{
-        width: 70%;
-    }
-    .btn-tagline{
-        margin: 3rem;
+        /* margin: 3rem; */
     }
     body{
         margin-bottom: 15rem;
