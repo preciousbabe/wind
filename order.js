@@ -1,82 +1,67 @@
 const products = {
-    "TYPE 10" :{
-        "power": "10 KVa / 8 KW",
+    "TYPE 12.5" :{
+        "power": "12.5 KVa / 10 KW",
         "phase": "single phase",
         "output": "220 Volts",
-        "amps": "25 amp",
-        "size": "122 x 61 x 91 / 150 kg"
-    },
-    "TYPE 15" :{
-        "power": "15 KVa / 12 KW",
-        "phase": "single phase",
-        "output": "220 Volts",
-        "amps": "65 amp",
-        "size": "122 x 61 x 91 / 200 kg"
-    },
-    "TYPE 20" :{
-        "power": "20 KVa / 16 KW",
-        "phase": "single phase",
-        "output": "220 Volts",
-        "amps": "90 amp",
-        "size": "122 x 61 x 121 / 250 kg"
+        "amps": "32 amp",
+        "size": "2 x 2 x 4 / 150 kg"
     },
     "TYPE 25" :{
         "power": "25 KVa / 20 KW",
-        "phase": "Three phase",
-        "output": "480 Volts",
-        "amps": "42 amp",
-        "size": "122 x 61 x 121 / 350 kg"
+        "phase": "single phase",
+        "output": "220 Volts",
+        "amps": "65 amp",
+        "size": "4 x 2 x 4 / 200 kg"
     },
-    "TYPE 50" :{
+    "TYPE 60" :{
         "power": "50 KVa / 40 KW",
         "phase": "Three phase",
         "output": "480 Volts",
         "amps": "60 amp",
-        "size": "153 x 92 x 91 / 400 kg"
+        "size": "5 x 3 x 4 / 400 kg"
     },
     "TYPE 75" :{
         "power": "75 KVa / 60 KW",
         "phase": "Three phase",
         "output": "480 Volts",
         "amps": "90 amp",
-        "size": "153 x 92 x 91 / 550 kg"
+        "size": "5 x 3 x 4 / 550 kg"
     },
-    "TYPE 100" :{
-        "power": "100 KVa / 80 KW",
+    "TYPE 125" :{
+        "power": "125 KVa / 100 KW",
         "phase": "Three phase",
         "output": "480 Volts",
         "amps": "120 amp",
-        "size": "183 x 122 x 183 / 750 kg"
+        "size": "6 x 4 x 6 / 750 kg"
     },
     "TYPE 150" :{
-        "power": "150 KVa / 120 KW",
+        "power": "150 KVa / 125 KW",
         "phase": "Three phase",
         "output": "480 Volts",
         "amps": "180 amp",
-        "size": "214 x 122 x 214 / 1100 kg"
+        "size": "7 x 4 x 7 / 1100 kg"
     },
     "TYPE 250" :{
         "power": "250 KVa / 200 KW",
         "phase": "Three phase",
         "output": "480 Volts",
         "amps": "300 amp",
-        "size": "214 x 122 x 214 / 1500 kg"
+        "size": "7 x 4 x 7 / 1500 kg"
     },
-    "TYPE 500" :{
-        "power": "500 KVa / 400 KW",
+    "TYPE 620" :{
+        "power": "625 KVa / 500 KW",
         "phase": "Three phase",
         "output": "480 Volts",
         "amps": "600 amp",
-        "size": "305 x 122 x 214 / 3000 kg"
+        "size": "10 x 4 x 7 / 3000 kg"
     },
     "TYPE 1000" :{
         "power": "1000 KVa / 800 KW",
         "phase": "Three phase",
         "output": "480 Volts",
         "amps": "1200 amp",
-        "size": "366 x 153 x 305 / 5000 kg"
+        "size": "12 x 5 x 10 / 5000 kg"
     }
-
     
 }
 
@@ -94,7 +79,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         $('#phase').html(products[val].phase)
         $('#output').html(products[val].output)
         $('#amps').html(products[val].amps)
-        $('#size').html(products[val].size)
+        $('#dimension').html(products[val].dimension)
     })
 
 })
