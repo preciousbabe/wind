@@ -1,3 +1,85 @@
+<?php
+
+//set session 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require(dirname(__FILE__) . '/core/functions.php');
+
+//store form response
+$formResponse = array(
+    "success" => null,
+    "message" => null
+);
+
+// var_dump($_SESSION);
+//reassign values
+if (isset($_SESSION['formResponse']) && !empty($_SESSION['formResponse'])) {
+    $formResponse['success'] = $_SESSION['formResponse']['success'];
+    $formResponse['message'] = $_SESSION['formResponse']['message'];
+    //delete session
+    unset($_SESSION['formResponse']);
+}
+
+//use octavalidate
+use Validate\octaValidate;
+
+//create new instance
+$myForm = new octaValidate('', OV_OPTIONS);
+//define rules for each form input name
+$valRules = array(
+    "name" => array(
+        ["R", "Your Name is required"],
+        ["ALPHA_SPACES"]
+    ),
+    "email" => array(
+        ["R", "Your Email Address is required"],
+        ["EMAIL"]
+    ),
+    "phone" => array(
+        ["R", "Your Phone Number is required"],
+        ["DIGITS"]
+    ),
+    "message" => array(
+        ["R", "Your message is required"],
+        ["TEXT"]
+    )
+);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        //begin validation    
+        if ($myForm->validateFields($valRules, $_POST) === true) {
+            ///////////////////////////////send mail
+
+            $emailTemp = file_get_contents('core/emails/contact.html');
+            $dynamic = array(
+                "NAME" => $_POST['name'],
+                "EMAIL" => $_POST['email'],
+                "PHONE" => $_POST['phone'],
+                "MESSAGE" => $_POST['message'],
+            );
+            //replace placeholders with actual values
+            $body = doDynamicEmail($dynamic, $emailTemp);
+            //send mail
+            sendMail('admin@windelectric.com.ng', 'Admin', "I need Your Assistance", $body);
+            //return response
+            $_SESSION['formResponse'] = ["success" => true, "message" => "Message has been sent successfully!"];
+            //set session for 
+            header("Location: index.php") . exit();
+        } else {
+            //return errors  
+            $_SESSION['formResponse'] = ["success" => false, "message" => "Form validation failed"];
+            header("Location: index.php") . exit();
+        }
+    } catch (Exception $e) {
+        error_log($e);
+        $_SESSION['formResponse'] = ["success" => false, "message" => "A server error has occured"];
+        header("Location: index.php") . exit();
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +94,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,400&display=swap"
         rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <link href="assets/toastr/toastr.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/octavalidate@latest/native/validate.js"></script>
     <title>Wind Electricity Nigeria</title>
+    <style>
+        .octavalidate-txt-error {
+            font-size: inherit;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,7 +111,7 @@
     <header class="header">
         <nav class="navbar navbar-expand-lg bg-light mb-5">
             <div class="container">
-                <a href="./index.html" class="navbar-brand">
+                <a href="./index.php" class="navbar-brand">
                     <img src="./assets/images/logo.png" alt="logo">
                 </a>
                 <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu" type="button">
@@ -61,7 +152,7 @@
                     <h1 class="hero-tagline">Reliable & Sustainable <span>Wind Generated</span> Electricity</h1>
                     <h4 class="h2 text-light">Energy powers dreams, we create that energy for you...</h4>
                     <div class="mt-5">
-                        <a href="./register.html" class="btn-tagline mt-5">Get Started</a>
+                        <a href="./register.php" class="btn-tagline mt-5">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -332,7 +423,7 @@
             <div class="row">
                 <div class="col-lg">
                     <div class="contact-content">
-                        <h3 class="h2">Need Help? Don't Forget to Contact With Us</h3>
+                        <h3 class="h2">Need Help? Don't Forget to Contact Us</h3>
                         <p>We will ensure that all your questions are answered and your needs are met cordially.
                             We assure you that our product produces good quality electricity and last very long.
                         </p>
@@ -351,11 +442,23 @@
                     </div>
                 </div>
                 <div class="col-lg">
-                    <form action="">
-                        <input class="contact-input" type="text" placeholder="Name">
-                        <input class="contact-input" type="email" placeholder="Your Email">
-                        <input class="contact-input" type="number" placeholder="Your Number">
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                    <form method="post" id="form_contact">
+                        <div>
+                            <input name="name" class="contact-input" type="text" placeholder="Name" id="inp_name"
+                                octavalidate="R,ALPHA_SPACES">
+                        </div>
+                        <div>
+                            <input name="email" class="contact-input" type="email" placeholder="Your Email"
+                                id="inp_email" octavalidate="R,EMAIL">
+                        </div>
+                        <div>
+                            <input name="phone" class="contact-input" type="number" placeholder="Your Number"
+                                id="inp_num" octavalidate="R,DIGITS">
+                        </div>
+                        <div>
+                            <textarea name="message" id="inp_message" cols="30" rows="10" placeholder="Message"
+                                octavalidate="R,TEXT"></textarea>
+                        </div>
                         <input type="submit" class="btn" value="Send Message">
                     </form>
                 </div>
@@ -365,7 +468,44 @@
         <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
         <script src="./main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/toastr/toastr.min.js"></script>
 
+        <?php
+        if (
+            isset($formResponse['success']) && is_bool($formResponse['success'])
+            && isset($formResponse['message']) && !empty($formResponse['message'])
+        ) {
+            if ($formResponse['success'] === true):
+        ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                toastr.success("<?php print($formResponse['message']); ?>")
+                setTimeout(() => {
+                    window.location.href = "order.php";
+                }, 3000)
+            })
+        </script>
+        <?php elseif ($formResponse['success'] === false):
+
+        ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                toastr.error("<?php print($formResponse['message']); ?>")
+            })
+        </script>
+        <?php endif;
+        }
+        ?>
+        <script>
+            $('#form_contact').on('submit', (e) => {
+                const f = new octaValidate(e.target.id);
+                if (!f.validate()) {
+                    e.preventDefault();
+                } else {
+                    e.currentTarget.submit()
+                }
+            })
+        </script>
 </body>
 
 </html>

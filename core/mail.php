@@ -16,15 +16,15 @@ function sendMail($user_email, $user_name, $subject, $body)
         //Server settings
         //$mail->SMTPDebug = SMTP::DEBUG_SERVER; //Enable verbose debug output
         $mail->isSMTP(); //Send using SMTP
-        $mail->Host = 'smtp.example.com'; //Set the SMTP server to send through
+        $mail->Host = '	mail.windelectric.com.ng'; //Set the SMTP server to send through
         $mail->SMTPAuth = true; //Enable SMTP authentication
-        $mail->Username = 'user@example.com'; //SMTP username
-        $mail->Password = 'secret'; //SMTP password
+        $mail->Username = 'support@windelectric.com.ng'; //SMTP username
+        $mail->Password = 'Y(^&loWmX+Kj'; //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Enable implicit TLS encryption
         $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('hello@tailorskit.com', 'Tailors Kit');
+        $mail->setFrom('support@windelectric.com.ng', 'Wind Electric');
         $mail->addAddress($user_email, $user_name); //Add a recipient
         // $mail->addAddress('ellen@example.com'); //Name is optional
         // $mail->addReplyTo('info@example.com', 'Information');

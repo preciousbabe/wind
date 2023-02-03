@@ -66,8 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       } else {
         $_SESSION['user'] = array(
           "username" => (!empty($user['username'])) ? $user['username'] : null,
-          "user_id" => (!empty($user['user_id'])) ? $user['user_id'] : null,
-          "email" => (!empty($user['email'])) ? $user['email'] : null
+          "email" => (!empty($user['email'])) ? $user['email'] : null,
+          "phone" => (!empty($user['phone'])) ? $user['phone'] : null,
+          "address" => (!empty($user['address'])) ? $user['address'] : null
         );
         //set response
         $_SESSION['formResponse'] = ["success" => true, "message" => "Login successful"];
