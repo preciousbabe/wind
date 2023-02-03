@@ -75,9 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $newPass = password_hash($pass, PASSWORD_BCRYPT);
             //update db
             $upd = $db->Update("UPDATE users SET pass = :pass WHERE id = :id", ['pass' => $newPass, 'id' => $user['id']]);
-
+            unset($_SESSION['hash']);
+            unset($_SESSION['email']);
             //return response
-            $_SESSION['formResponse'] = ["success" => false, "message" => "Your password has been updated"];
+            $_SESSION['formResponse'] = ["success" => true, "message" => "Your password has been updated"];
             header("Location: login.php") . exit();
         } else {
             //return errors  
@@ -105,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
   <link href="assets/toastr/toastr.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/octavalidate@latest/native/validate.js"></script>
 </head>
 
 <body class="h-100">

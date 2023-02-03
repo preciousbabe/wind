@@ -97,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
   <link href="assets/toastr/toastr.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/octavalidate@latest/native/validate.js"></script>
 </head>
 
 <body class="h-100">

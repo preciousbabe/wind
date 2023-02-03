@@ -13,6 +13,22 @@ if(!isset($_SESSION['user']) || empty($_SESSION['user'])){
 
 require(dirname(__FILE__) . '/core/functions.php');
 
+//store form response
+$formResponse = array(
+  "success" => null,
+  "message" => null
+);
+
+// var_dump($_SESSION);
+//reassign values
+if (isset($_SESSION['formResponse']) && !empty($_SESSION['formResponse'])) {
+  $formResponse['success'] = $_SESSION['formResponse']['success'];
+  $formResponse['message'] = $_SESSION['formResponse']['message'];
+  //delete session
+  unset($_SESSION['formResponse']);
+}
+
+
 $products = array(
   "TYPE 12.5" => array(
     "power" => "12.5 KVa / 10 KW",
@@ -92,6 +108,53 @@ $products = array(
 
 $prod = $db->SelectAll("SELECT * FROM products");
 
+//use octavalidate
+use Validate\octaValidate;
+
+//create new instance
+$myForm = new octaValidate('', OV_OPTIONS);
+//define rules for each form input name
+$valRules = array(
+    "product" => array(
+        ["R", "The product is required"],
+        ["TEXT"]
+    )
+);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  try {
+      //begin validation    
+      if ($myForm->validateFields($valRules, $_POST) === true) {
+
+          ///////////////////////////////send mail
+          
+          $emailTemp = file_get_contents('core/emails/new_order.html');
+          $dynamic = array(
+              "PRODUCT_NAME" => $_POST['product'],
+              "USERNAME" => (!empty($_SESSION['user']['username'])) ? $_SESSION['user']['username'] : "Not Available",
+              "EMAIL" => (!empty($_SESSION['user']['email'])) ? $_SESSION['user']['email'] : "Not Available",
+              "PHONE" => (!empty($_SESSION['user']['phone'])) ? $_SESSION['user']['phone'] : "Not Available",
+              "ADDRESS" => (!empty($_SESSION['user']['address'])) ? $_SESSION['user']['address'] : "Not Available"
+          );
+          //replace placeholders with actual values
+          $body = doDynamicEmail($dynamic, $emailTemp);
+          //send mail
+          sendMail('admin@windelectric.com.ng', '', "You Have A New Order", $body);
+          //return response
+          $_SESSION['formResponse'] = ["success" => true, "message" => "Thank you for your order!"];
+          //set session for 
+          header("Location: newpass.php") . exit();
+      } else {
+          //return errors  
+          $_SESSION['formResponse'] = ["success" => false, "message" => "Form validation failed"];
+          header("Location: order.php") . exit();
+      }
+  } catch (Exception $e) {
+      error_log($e);
+      $_SESSION['formResponse'] = ["success" => false, "message" => "A server error has occured"];
+      header("Location: order.php") . exit();
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
@@ -118,8 +181,9 @@ $prod = $db->SelectAll("SELECT * FROM products");
             <div class="text-center my-5">
               <img src="./assets/images/logo.png" alt="logo" class="logo">
             </div>
+            <form id="form_create_order" method="post">
             <label for="inp_product_type">Select Product Type</label>
-            <select name="product_type" id="inp_product_type" class="form-select form-select-lg mb-3">
+            <select octavalidate="R,TEXT" name="product" id="inp_product_type" class="form-select form-select-lg mb-3">
               <option value="">Select One</option>
               <?php 
                 foreach($prod as $key => $p){
@@ -155,6 +219,7 @@ $prod = $db->SelectAll("SELECT * FROM products");
                 </tbody>
               </table>
             </div>
+            </form>
             <!-- <button class="btn btn-primary my-3">Order Now!</button> -->
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -169,10 +234,10 @@ $prod = $db->SelectAll("SELECT * FROM products");
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
                   <div class="modal-body">
-                    <p class="lead">We will send you a mail of the price of the product you ordered shortly</p>
+                    <p class="lead">Are you sure you want to place an order for this product?<br /><br /> If yes, we will send you a mail with the price of this product shortly</p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+                    <button type="submit" form="form_create_order" class="btn btn-primary" data-bs-dismiss="modal">Yes, I'm sure</button>
                   </div>
                 </div>
               </div>
@@ -184,6 +249,42 @@ $prod = $db->SelectAll("SELECT * FROM products");
   </div>
   </div>
   <script src="assets/toastr/toastr.min.js"></script>
+  <?php
+  if (
+    isset($formResponse['success']) && is_bool($formResponse['success'])
+    && isset($formResponse['message']) && !empty($formResponse['message'])
+  ) {
+    if ($formResponse['success'] === true):
+  ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      toastr.success("<?php print($formResponse['message']); ?>")
+      setTimeout(() => {
+        window.location.href = "order.php";
+      }, 3000)
+    })
+  </script>
+  <?php elseif ($formResponse['success'] === false):
+
+        ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      toastr.error("<?php print($formResponse['message']); ?>")
+    })
+  </script>
+  <?php endif;
+  }
+        ?>
+  <script>
+    $('#form_login').on('submit', (e) => {
+      const f = new octaValidate(e.target.id);
+      if (!f.validate()) {
+        e.preventDefault();
+      } else {
+        e.currentTarget.submit()
+      }
+    })
+  </script>
   <script>
     const products = <?php print(json_encode($prod)); ?>;
 
