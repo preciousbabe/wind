@@ -205,7 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p><i class="fas fa-lightbulb"></i>Redefining Electrical Power Energy</p>
                         <p><i class="fas fa-fire"></i>WMPG Zero Emission Energy</p>
                         <p><i class="fas fa-bolt"></i>Free Energy generation Breakthrough</p>
-                        <a href="./learnmore.html"><button class="btn">Learn More</button></a>
+                        <a href="./learnmore.php"><button class="btn">Learn More</button></a>
                     </div>
                 </div>
             </div>
@@ -361,7 +361,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             class="fs-3 fw-light">5000kg</span></div>
                 </div>
                 <div class="text-center">
-                    <a href="./order.html" class="btn btn-primary p2 text-center my-4">Click Here To Place Order!</a>
+                    <a href="./order.php" class="btn btn-primary p2 text-center my-4">Click Here To Place Order!</a>
                 </div>
             </div>
         </section>

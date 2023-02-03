@@ -29,80 +29,80 @@ if (isset($_SESSION['formResponse']) && !empty($_SESSION['formResponse'])) {
 }
 
 
-$products = array(
-  "TYPE 12.5" => array(
-    "power" => "12.5 KVa / 10 KW",
-    "phase" => "single phase",
-    "output" => "220 Volts",
-    "amps" => "32 amp",
-    "size" => "2 x 2 x 4 / 150 kg"
-  ),
-  "TYPE 25" => array(
-    "power" => "25 KVa / 20 KW",
-    "phase" => "single phase",
-    "output" => "220 Volts",
-    "amps" => "65 amp",
-    "size" => "4 x 2 x 4 / 200 kg"
-  ),
-  "TYPE 60" => array(
-    "power" => "50 KVa / 40 KW",
-    "phase" => "Three phase",
-    "output" => "480 Volts",
-    "amps" => "60 amp",
-    "size" => "5 x 3 x 4 / 400 kg"
-  ),
-  "TYPE 75" => array(
-    "power" => "75 KVa / 60 KW",
-    "phase" => "Three phase",
-    "output" => "480 Volts",
-    "amps" => "90 amp",
-    "size" => "5 x 3 x 4 / 550 kg"
-  ),
-  "TYPE 125" => array(
-    "power" => "125 KVa / 100 KW",
-    "phase" => "Three phase",
-    "output" => "480 Volts",
-    "amps" => "120 amp",
-    "size" => "6 x 4 x 6 / 750 kg"
-  ),
-  "TYPE 150" => array(
-    "power" => "150 KVa / 125 KW",
-    "phase" => "Three phase",
-    "output" => "480 Volts",
-    "amps" => "180 amp",
-    "size" => "7 x 4 x 7 / 1100 kg"
-  ),
-  "TYPE 250" => array(
-    "power" => "250 KVa / 200 KW",
-    "phase" => "Three phase",
-    "output" => "480 Volts",
-    "amps" => "300 amp",
-    "size" => "7 x 4 x 7 / 1500 kg"
-  ),
-  "TYPE 620" => array(
-    "power" => "625 KVa / 500 KW",
-    "phase" => "Three phase",
-    "output" => "480 Volts",
-    "amps" => "600 amp",
-    "size" => "10 x 4 x 7 / 3000 kg"
-  ),
-  "TYPE 1000" => array(
-    "power" => "1000 KVa / 800 KW",
-    "phase" => "Three phase",
-    "output" => "480 Volts",
-    "amps" => "1200 amp",
-    "size" => "12 x 5 x 10 / 5000 kg"
-  )
-);
+// $products = array(
+//   "TYPE 12.5" => array(
+//     "power" => "12.5 KVa / 10 KW",
+//     "phase" => "single phase",
+//     "output" => "220 Volts",
+//     "amps" => "32 amp",
+//     "dimension" => "2 x 2 x 4 / 150 kg"
+//   ),
+//   "TYPE 25" => array(
+//     "power" => "25 KVa / 20 KW",
+//     "phase" => "single phase",
+//     "output" => "220 Volts",
+//     "amps" => "65 amp",
+//     "dimension" => "4 x 2 x 4 / 200 kg"
+//   ),
+//   "TYPE 60" => array(
+//     "power" => "50 KVa / 40 KW",
+//     "phase" => "Three phase",
+//     "output" => "480 Volts",
+//     "amps" => "60 amp",
+//     "dimension" => "5 x 3 x 4 / 400 kg"
+//   ),
+//   "TYPE 75" => array(
+//     "power" => "75 KVa / 60 KW",
+//     "phase" => "Three phase",
+//     "output" => "480 Volts",
+//     "amps" => "90 amp",
+//     "dimension" => "5 x 3 x 4 / 550 kg"
+//   ),
+//   "TYPE 125" => array(
+//     "power" => "125 KVa / 100 KW",
+//     "phase" => "Three phase",
+//     "output" => "480 Volts",
+//     "amps" => "120 amp",
+//     "dimension" => "6 x 4 x 6 / 750 kg"
+//   ),
+//   "TYPE 150" => array(
+//     "power" => "150 KVa / 125 KW",
+//     "phase" => "Three phase",
+//     "output" => "480 Volts",
+//     "amps" => "180 amp",
+//     "dimension" => "7 x 4 x 7 / 1100 kg"
+//   ),
+//   "TYPE 250" => array(
+//     "power" => "250 KVa / 200 KW",
+//     "phase" => "Three phase",
+//     "output" => "480 Volts",
+//     "amps" => "300 amp",
+//     "dimension" => "7 x 4 x 7 / 1500 kg"
+//   ),
+//   "TYPE 620" => array(
+//     "power" => "625 KVa / 500 KW",
+//     "phase" => "Three phase",
+//     "output" => "480 Volts",
+//     "amps" => "600 amp",
+//     "dimension" => "10 x 4 x 7 / 3000 kg"
+//   ),
+//   "TYPE 1000" => array(
+//     "power" => "1000 KVa / 800 KW",
+//     "phase" => "Three phase",
+//     "output" => "480 Volts",
+//     "amps" => "1200 amp",
+//     "dimension" => "12 x 5 x 10 / 5000 kg"
+//   )
+// );
 
 // foreach($products as $name => $data){
-//   $db->Insert("INSERT INTO products (name, power, phase, output, amps, size) VALUES (:n, :po, :ph, :o, :a, :s)",[
+//   $db->Insert("INSERT INTO products (name, power, phase, output, amps, dimension) VALUES (:n, :po, :ph, :o, :a, :s)",[
 //     'n' => $name,
 //     'po' => $data['power'],
 //     'ph' => $data['phase'],
 //     'o' => $data['output'],
 //     'a' => $data['amps'],
-//     's' => $data['size']
+//     's' => $data['dimension']
 //   ]);
 // }
 
@@ -165,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./form.css" />
   <link rel="shortcut icon" href="./assets/images/logo.png">
-  <title>Order form</title>
+  <title>Order For A Product</title>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
